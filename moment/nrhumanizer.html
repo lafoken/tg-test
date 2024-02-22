@@ -1,0 +1,112 @@
+<!-- This creates and configures the onscreen elements of the node           -->
+<!-- Read the docs: https://nodered.org/docs/creating-nodes/edit-dialog      -->
+<!-- First, the content of the edit dialog is defined.                       -->
+<script type="text/html" data-template-name="humanizer">
+  <!-- data-template-name identifies the node type this is for              -->
+
+  <!-- TEXT:INPUT_KEY -->
+  <div class="form-row">
+    <label for="node-input-input_key"
+      ><i class="fa fa-arrow-right"></i> Input prop</label
+    >
+    <input
+      type="text"
+      id="node-input-input_key"
+      style="width: 70%;"
+      placeholder="property name in msg.payload or empty for all"
+    />
+  </div>
+  <!-- CHECKBOX:APPROXIMATE -->
+  <div class="form-row">
+    <label style="width:auto" for="node-input-approximate"
+      ><i class="fa fa-solid fa-calculator"></i> Use <code>Math.ceil</code> if float
+      value arrives on input:&nbsp;</label
+    >
+    <input
+      type="checkbox"
+      id="node-input-approximate"
+      style="display:inline-block; width:auto; vertical-align:top;"
+      autocomplete="off"
+    />
+  </div>
+  <!-- SELECT:UNITS -->
+  <div class="form-row">
+    <label style="width:auto" for="node-input-units"
+      ><i class="fa fa-hourglass-half"></i> Source units&nbsp;</label
+    >
+    <select name="pets" id="node-input-units">
+       <option value="milliseconds">Milliseconds</option>
+      <option value="seconds">Seconds</option>
+      <option value="minutes">Minutes</option>
+      <option value="hours">Hours</option>
+      <option value="days">Days</option>
+    </select>
+    
+  </div>
+  <!-- TEXT:OUTPUT_KEY -->
+  <div class="form-row">
+    <label for="node-input-output_key"
+      ><i class="fa fa-solid fa-arrow-left"></i> Output prop</label
+    >
+    <input
+      type="text"
+      id="node-input-output_key"
+      style="width: 70%;"
+      placeholder="property name"
+    />
+  </div>
+  <!-- NODE NAME - Should always be the last field -->
+  <div class="form-row">
+    <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+    <input type="text" id="node-input-name" placeholder="Name" />
+  </div>
+
+  <div class="form-tips" style="font-size:83%">
+   Updated version of <code>node-red-contrib-moment</code> with extracted and tuned "humanized" node functionality.
+  </div>
+</script>
+
+<!-- Next, some simple help text is provided for the node.                   -->
+<!-- The first <p> is used as the pop-up tool tip when hovering over pallette -->
+<script type="text/html" data-help-name="humanizer">
+  <p>Humanize duration advanced handler.</p>
+  <p>
+    Uses the
+    <a href="https://momentjs.com/docs/#/durations/humanize/"
+      >humanize functionality in the moment.js library</a
+    >.
+  </p>
+  <p>
+    Output is the humanized timespan as a
+    localized text message (e.g. "2 seconds").
+  </p>
+</script>
+
+<!-- Finally, the node type is registered along with all of its properties   -->
+<script type="text/javascript">
+  // Read the docs: https://nodered.org/docs/creating-nodes/node-html
+  RED.nodes.registerType("humanizer", {
+    category: "formats", // the palette category
+    color: "#2D9596",
+    // Read the docs: https://nodered.org/docs/creating-nodes/properties
+    defaults: {
+      name: { value: "" },
+      input_key: { value: "" },
+      output_key: { value: "" },
+      approximate: { value: true },
+      units: { value: "seconds" },
+    },
+    inputs: 1, // set the number of inputs - only 0 or 1
+    outputs: 1, // set the number of outputs - 0 to n
+    // set the icon (held in icons dir below where you save the node)
+    icon: "icon-min.svg", // saved in  icons/myicon.png
+    label: function () {
+      // sets the default label contents
+      return this.name || "Humanizer";
+    },
+    labelStyle: function () {
+      // sets the class to apply to the label
+      return this.name ? "node_label_italic" : "";
+    },
+  }); // ---- end of RED.nodes.registerType ---- //
+</script>

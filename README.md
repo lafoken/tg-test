@@ -1,4 +1,4 @@
-# node-red-contrib-advanced-humanize
+# node-red-contrib-tg-test
 
 ## How to use
 

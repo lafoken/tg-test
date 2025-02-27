@@ -1,12 +1,12 @@
 {
-  "name": "nr-contrib-humanize",
+  "name": "nr-contrib-tg-test",
   "version": "1.0.0",
-  "description": "Node-Red Node that produces advanced formatted duration output using the Moment.js library.",
+  "description": "Node-Red Node, tg-test.",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "moment": "^2.29.0"
+    "axios": "^1.8.1"
   },
   "devDependencies": {
     "@types/node-red": "^1.1.0"
@@ -22,7 +22,7 @@
   "node-red": {
     "version": ">=3",
     "nodes": {
-      "humanizer": "moment/nrhumanizer.js"
+      "humanizer": "moment/tgTest.js"
     },
     "notyetnodes": {}
   },
@@ -36,6 +36,6 @@
     "not dead",
     "not ie < 11"
   ],
-  "main": "moment/nrhumanizer.js",
+  "main": "moment/tgTest.js",
   "license": "MIT"
 }

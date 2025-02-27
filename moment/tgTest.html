@@ -1,0 +1,38 @@
+<script type="text/html" data-template-name="tgTest">
+  <div class="form-row">
+    <label for="node-input-bot_token"><i class="fa fa-key"></i> Bot Token</label>
+    <input type="text" id="node-input-bot_token" placeholder="Telegram Bot Token">
+  </div>
+  <div class="form-row">
+    <label for="node-input-chat_id"><i class="fa fa-user"></i> Chat ID</label>
+    <input type="text" id="node-input-chat_id" placeholder="Your Telegram Chat ID">
+  </div>
+  <div class="form-row">
+    <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+    <input type="text" id="node-input-name" placeholder="Node Name">
+  </div>
+</script>
+
+<script type="text/html" data-help-name="tgTest">
+  <p>Нода для відправлення повідомлень у Telegram.</p>
+  <p>Необхідно ввести <code>Bot Token</code> та <code>Chat ID</code>.</p>
+  <p>Очікує текст у <code>msg.payload</code> і надсилає його через API.</p>
+</script>
+
+<script type="text/javascript">
+  RED.nodes.registerType("tgTest", {
+    category: "social",
+    color: "#2D9596",
+    defaults: {
+      bot_token: { value: "", required: true },
+      chat_id: { value: "", required: true },
+      name: { value: "" },
+    },
+    inputs: 1,
+    outputs: 1,
+    icon: "telegram.svg",
+    label: function () {
+      return this.name || "tgTest";
+    },
+  });
+</script>
